@@ -11,9 +11,13 @@ export default function TipButton({ value, active, onClick }: TipButtonProps) {
     <button
       type="button"
       onClick={onClick}
-      className={`py-2 rounded-md font-semibold focus:outline-none focus:ring-2 focus:ring-cyan-300 ${
-        active ? 'bg-cyan-600 text-white' : 'bg-gray-100 text-gray-800'
-      }`}
+      style={{
+        padding: '8px',
+        border: '1px solid black',
+        backgroundColor: active ? 'black' : 'white',
+        color: active ? 'white' : 'black',
+        cursor: 'pointer'
+      }}
     >
       {value}%
     </button>
