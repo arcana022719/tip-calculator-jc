@@ -16,7 +16,8 @@ export default function TipButton({ value, active, onClick }: TipButtonProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
-        padding: '10px',
+        width: '100%',
+        padding: '12px',
         border: 'none',
         backgroundColor: active 
           ? 'hsl(172, 67%, 45%)' 
@@ -33,7 +34,12 @@ export default function TipButton({ value, active, onClick }: TipButtonProps) {
         fontSize: '24px',
         fontFamily: 'Space Mono, monospace',
         fontWeight: '700',
-        transition: 'all 0.3s ease'
+        transition: 'all 0.3s ease',
+        height: '48px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxSizing: 'border-box'
       }}
     >
       {value}%
