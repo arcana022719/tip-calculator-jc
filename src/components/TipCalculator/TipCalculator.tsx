@@ -25,24 +25,77 @@ export default function TipCalculator() {
   }
 
   const showPeopleError = people !== '' && parseInt(people) <= 0
+  const hasValues = bill !== '' || people !== '' || selectedTip !== null || customTip !== ''
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', border: '1px solid black', padding: '20px' }}>
+    <div style={{ 
+      display: 'grid', 
+      gridTemplateColumns: '1fr 1fr', 
+      gap: '48px', 
+      backgroundColor: 'hsl(0, 100%, 100%)',
+      padding: '32px',
+      borderRadius: '25px',
+      boxShadow: '0 10px 40px rgba(0,0,0,0.1)',
+      maxWidth: '920px',
+      width: '100%'
+    }}>
       {/* Left Section - Input Section */}
       <div>
-        <label style={{ display: 'block', marginBottom: '5px' }}>Bill</label>
-        <input
-          type="number"
-          min="0"
-          step="0.01"
-          value={bill}
-          onChange={(e) => setBill(e.target.value)}
-          placeholder="0"
-          style={{ width: '100%', padding: '8px', border: '1px solid black', marginBottom: '20px' }}
-        />
+        <label style={{ 
+          display: 'block', 
+          marginBottom: '8px',
+          color: 'hsl(186, 14%, 43%)',
+          fontSize: '16px'
+        }}>
+          Bill
+        </label>
+        <div style={{ position: 'relative', marginBottom: '32px' }}>
+          <span style={{
+            position: 'absolute',
+            left: '18px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            color: 'hsl(184, 14%, 56%)',
+            fontSize: '24px'
+          }}>$</span>
+          <input
+            type="number"
+            min="0"
+            step="0.01"
+            value={bill}
+            onChange={(e) => setBill(e.target.value)}
+            placeholder="0"
+            style={{ 
+              width: '100%', 
+              padding: '6px 18px',
+              paddingLeft: '40px',
+              border: 'none',
+              backgroundColor: 'hsl(189, 47%, 97%)',
+              borderRadius: '5px',
+              fontSize: '24px',
+              color: 'hsl(183, 100%, 15%)',
+              textAlign: 'right',
+              fontFamily: 'Space Mono, monospace',
+              fontWeight: '700',
+              outline: 'none'
+            }}
+          />
+        </div>
 
-        <label style={{ display: 'block', marginBottom: '10px' }}>Select Tip %</label>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px', marginBottom: '10px' }}>
+        <label style={{ 
+          display: 'block', 
+          marginBottom: '16px',
+          color: 'hsl(186, 14%, 43%)',
+          fontSize: '16px'
+        }}>
+          Select Tip %
+        </label>
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(3, 1fr)', 
+          gap: '14px', 
+          marginBottom: '32px' 
+        }}>
           {tipOptions.map((t) => (
             <TipButton
               key={t}
@@ -63,58 +116,172 @@ export default function TipCalculator() {
               setCustomTip(e.target.value)
               setSelectedTip(null)
             }}
-            style={{ padding: '8px', border: '1px solid black' }}
+            style={{ 
+              padding: '6px 18px',
+              border: 'none',
+              backgroundColor: 'hsl(189, 47%, 97%)',
+              borderRadius: '5px',
+              fontSize: '24px',
+              color: 'hsl(183, 100%, 15%)',
+              textAlign: 'right',
+              fontFamily: 'Space Mono, monospace',
+              fontWeight: '700',
+              outline: 'none'
+            }}
           />
         </div>
 
-        <label style={{ display: 'block', marginBottom: '5px' }}>Number of People</label>
-        <input
-          type="number"
-          min="0"
-          value={people}
-          onChange={(e) => setPeople(e.target.value)}
-          placeholder="0"
-          style={{ 
-            width: '100%', 
-            padding: '8px', 
-            border: showPeopleError ? '1px solid red' : '1px solid black'
-          }}
-        />
-        {showPeopleError && <p style={{ color: 'red', fontSize: '12px', marginTop: '5px' }}>Can't be zero</p>}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <label style={{ 
+            display: 'block', 
+            marginBottom: '8px',
+            color: 'hsl(186, 14%, 43%)',
+            fontSize: '16px'
+          }}>
+            Number of People
+          </label>
+          {showPeopleError && (
+            <span style={{ 
+              color: '#E17457', 
+              fontSize: '16px',
+              marginBottom: '8px'
+            }}>
+              Can't be zero
+            </span>
+          )}
+        </div>
+        <div style={{ position: 'relative' }}>
+          <span style={{
+            position: 'absolute',
+            left: '18px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            color: 'hsl(184, 14%, 56%)',
+            fontSize: '24px'
+          }}>👤</span>
+          <input
+            type="number"
+            min="0"
+            value={people}
+            onChange={(e) => setPeople(e.target.value)}
+            placeholder="0"
+            style={{ 
+              width: '100%', 
+              padding: '6px 18px',
+              paddingLeft: '40px',
+              border: showPeopleError ? '2px solid #E17457' : 'none',
+              backgroundColor: 'hsl(189, 47%, 97%)',
+              borderRadius: '5px',
+              fontSize: '24px',
+              color: 'hsl(183, 100%, 15%)',
+              textAlign: 'right',
+              fontFamily: 'Space Mono, monospace',
+              fontWeight: '700',
+              outline: 'none'
+            }}
+          />
+        </div>
       </div>
 
       {/* Right Section - Results Section */}
-      <div style={{ border: '1px solid black', padding: '20px' }}>
-        <div style={{ marginBottom: '20px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+      <div style={{ 
+        backgroundColor: 'hsl(183, 100%, 15%)',
+        padding: '40px',
+        borderRadius: '15px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between'
+      }}>
+        <div>
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'center',
+            marginBottom: '40px' 
+          }}>
             <div>
-              <div>Tip Amount</div>
-              <div style={{ fontSize: '12px' }}>/ person</div>
+              <div style={{ 
+                color: 'hsl(0, 100%, 100%)',
+                fontSize: '16px',
+                marginBottom: '4px'
+              }}>
+                Tip Amount
+              </div>
+              <div style={{ 
+                fontSize: '13px',
+                color: 'hsl(184, 14%, 56%)'
+              }}>
+                / person
+              </div>
             </div>
-            <div style={{ fontSize: '24px' }}>
-              ${tipAmount.toFixed(2)}
+            <div style={{ 
+              fontSize: '48px',
+              color: 'hsl(172, 67%, 45%)',
+              fontFamily: 'Space Mono, monospace',
+              fontWeight: '700'
+            }}>
+              ${isNaN(tipAmount) ? '0.00' : tipAmount.toFixed(2)}
             </div>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'center',
+            marginBottom: '32px' 
+          }}>
             <div>
-              <div>Total</div>
-              <div style={{ fontSize: '12px' }}>/ person</div>
+              <div style={{ 
+                color: 'hsl(0, 100%, 100%)',
+                fontSize: '16px',
+                marginBottom: '4px'
+              }}>
+                Total
+              </div>
+              <div style={{ 
+                fontSize: '13px',
+                color: 'hsl(184, 14%, 56%)'
+              }}>
+                / person
+              </div>
             </div>
-            <div style={{ fontSize: '24px' }}>
-              ${totalAmount.toFixed(2)}
+            <div style={{ 
+              fontSize: '48px',
+              color: 'hsl(172, 67%, 45%)',
+              fontFamily: 'Space Mono, monospace',
+              fontWeight: '700'
+            }}>
+              ${isNaN(totalAmount) ? '0.00' : totalAmount.toFixed(2)}
             </div>
           </div>
         </div>
 
         <button 
           onClick={handleReset}
+          disabled={!hasValues}
           style={{ 
             width: '100%', 
-            padding: '10px', 
-            border: '1px solid black',
-            cursor: 'pointer',
-            marginTop: '40px'
+            padding: '10px',
+            border: 'none',
+            backgroundColor: hasValues ? 'hsl(172, 67%, 45%)' : 'hsl(183, 79%, 24%)',
+            color: 'hsl(183, 100%, 15%)',
+            borderRadius: '5px',
+            fontSize: '20px',
+            fontFamily: 'Space Mono, monospace',
+            fontWeight: '700',
+            cursor: hasValues ? 'pointer' : 'not-allowed',
+            textTransform: 'uppercase',
+            transition: 'background-color 0.3s ease'
+          }}
+          onMouseEnter={(e) => {
+            if (hasValues) {
+              e.currentTarget.style.backgroundColor = 'hsl(172, 67%, 55%)'
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (hasValues) {
+              e.currentTarget.style.backgroundColor = 'hsl(172, 67%, 45%)'
+            }
           }}
         >
           RESET
