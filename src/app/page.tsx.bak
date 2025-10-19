@@ -11,10 +11,10 @@ return (
     alt="SPLITTER" 
     width={87} 
     height={54}
-    className="logo"
-    style={{ display: 'block', margin: '0 auto' }}
+    style={{ display: 'block' }}
   />
   <TipCalculator />
 </div>
 )
 }
+```
