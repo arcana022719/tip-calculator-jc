@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import TipButton from './TipButton'
+import styles from './TipCalculator.module.css'
 
 export default function TipCalculator() {
   const [bill, setBill] = useState('')
@@ -28,17 +29,7 @@ export default function TipCalculator() {
   const hasValues = bill !== '' || people !== '' || selectedTip !== null || customTip !== ''
 
   return (
-    <div style={{ 
-      display: 'grid', 
-      gridTemplateColumns: '1fr 1fr', 
-      gap: '48px', 
-      backgroundColor: 'hsl(0, 100%, 100%)',
-      padding: '48px',
-      borderRadius: '25px',
-      boxShadow: '0 10px 40px rgba(0,0,0,0.1)',
-      maxWidth: '920px',
-      width: '100%'
-    }}>
+    <div className={styles.calculator}>
       <div>
         <label style={{ 
           display: 'block', 
@@ -148,7 +139,7 @@ export default function TipCalculator() {
               color: '#E17457', 
               fontSize: '14px'
             }}>
-              Can't be zero
+              Cannot be zero
             </span>
           )}
         </div>
