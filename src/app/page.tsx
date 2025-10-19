@@ -5,9 +5,16 @@ import TipCalculator from '../components/TipCalculator/TipCalculator'
 
 export default function Home() {
 return (
-<div className="p-4">
-<h1 className="text-2xl font-semibold mb-6 text-center">Tip Calculator</h1>
-<TipCalculator />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+<div style={{ 
+  minHeight: '100vh',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: '20px',
+  gap: '48px'
+}}>
+  <TipCalculator />
 </div>
 )
 }

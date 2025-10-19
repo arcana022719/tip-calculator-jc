@@ -7,13 +7,40 @@ interface TipButtonProps {
 }
 
 export default function TipButton({ value, active, onClick }: TipButtonProps) {
+  const [isHovered, setIsHovered] = React.useState(false)
+
   return (
     <button
       type="button"
       onClick={onClick}
-      className={`py-2 rounded-md font-semibold focus:outline-none focus:ring-2 focus:ring-cyan-300 ${
-        active ? 'bg-cyan-600 text-white' : 'bg-gray-100 text-gray-800'
-      }`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        width: '100%',
+        padding: '12px',
+        border: 'none',
+        backgroundColor: active 
+          ? 'hsl(172, 67%, 45%)' 
+          : isHovered 
+            ? 'hsl(172, 67%, 55%)'
+            : 'hsl(183, 100%, 15%)',
+        color: active 
+          ? 'hsl(183, 100%, 15%)' 
+          : isHovered 
+            ? 'hsl(183, 100%, 15%)'
+            : 'hsl(0, 100%, 100%)',
+        cursor: 'pointer',
+        borderRadius: '5px',
+        fontSize: '24px',
+        fontFamily: 'Space Mono, monospace',
+        fontWeight: '700',
+        transition: 'all 0.3s ease',
+        height: '48px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxSizing: 'border-box'
+      }}
     >
       {value}%
     </button>

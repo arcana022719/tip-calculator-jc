@@ -1,8 +1,17 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
 
 :root {
-  --background: #ffffff;
+  --background: hsl(172, 67%, 45%);
   --foreground: #171717;
+  --primary-cyan: hsl(172, 67%, 45%);
+  --dark-cyan: hsl(183, 100%, 15%);
+  --grey-500: hsl(186, 14%, 43%);
+  --grey-400: hsl(184, 14%, 56%);
+  --grey-200: hsl(185, 41%, 84%);
+  --grey-50: hsl(189, 47%, 97%);
+  --white: hsl(172, 67%, 45%);
+  --bg-cyan: hsl(185, 41%, 97%);
 }
 
 @theme inline {
@@ -20,7 +29,8 @@
 }
 
 body {
-  background: var(--background);
+  background: var(--bg-cyan);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
 }
