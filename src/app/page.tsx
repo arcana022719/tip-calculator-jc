@@ -12,8 +12,16 @@ return (
   alignItems: 'center',
   justifyContent: 'center',
   padding: '20px',
-  gap: '48px'
+  gap: '88px',
+  backgroundColor: 'hsl(185, 41%, 84%)'
 }}>
+  <img 
+    src="/images/logo.svg" 
+    alt="SPLITTER" 
+    width={87} 
+    height={54}
+    style={{ display: 'block' }}
+  />
   <TipCalculator />
 </div>
 )
