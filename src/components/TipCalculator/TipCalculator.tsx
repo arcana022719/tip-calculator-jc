@@ -33,30 +33,30 @@ export default function TipCalculator() {
       gridTemplateColumns: '1fr 1fr', 
       gap: '48px', 
       backgroundColor: 'hsl(0, 100%, 100%)',
-      padding: '32px',
+      padding: '48px',
       borderRadius: '25px',
       boxShadow: '0 10px 40px rgba(0,0,0,0.1)',
       maxWidth: '920px',
       width: '100%'
     }}>
-      {/* Left Section - Input Section */}
       <div>
         <label style={{ 
           display: 'block', 
           marginBottom: '8px',
           color: 'hsl(186, 14%, 43%)',
-          fontSize: '16px'
+          fontSize: '14px'
         }}>
           Bill
         </label>
-        <div style={{ position: 'relative', marginBottom: '32px' }}>
+        <div style={{ position: 'relative', marginBottom: '40px' }}>
           <span style={{
             position: 'absolute',
-            left: '18px',
+            left: '20px',
             top: '50%',
             transform: 'translateY(-50%)',
             color: 'hsl(184, 14%, 56%)',
-            fontSize: '24px'
+            fontSize: '20px',
+            pointerEvents: 'none'
           }}>$</span>
           <input
             type="number"
@@ -67,8 +67,8 @@ export default function TipCalculator() {
             placeholder="0"
             style={{ 
               width: '100%', 
-              padding: '6px 18px',
-              paddingLeft: '40px',
+              padding: '12px 20px',
+              paddingRight: '18px',
               border: 'none',
               backgroundColor: 'hsl(189, 47%, 97%)',
               borderRadius: '5px',
@@ -77,7 +77,8 @@ export default function TipCalculator() {
               textAlign: 'right',
               fontFamily: 'Space Mono, monospace',
               fontWeight: '700',
-              outline: 'none'
+              outline: 'none',
+              boxSizing: 'border-box'
             }}
           />
         </div>
@@ -86,15 +87,15 @@ export default function TipCalculator() {
           display: 'block', 
           marginBottom: '16px',
           color: 'hsl(186, 14%, 43%)',
-          fontSize: '16px'
+          fontSize: '14px'
         }}>
           Select Tip %
         </label>
         <div style={{ 
           display: 'grid', 
           gridTemplateColumns: 'repeat(3, 1fr)', 
-          gap: '14px', 
-          marginBottom: '32px' 
+          gap: '16px',
+          marginBottom: '40px'
         }}>
           {tipOptions.map((t) => (
             <TipButton
@@ -117,34 +118,35 @@ export default function TipCalculator() {
               setSelectedTip(null)
             }}
             style={{ 
-              padding: '6px 18px',
+              width: '100%',
+              padding: '12px 12px',
               border: 'none',
               backgroundColor: 'hsl(189, 47%, 97%)',
               borderRadius: '5px',
-              fontSize: '24px',
+              fontSize: '20px',
               color: 'hsl(183, 100%, 15%)',
-              textAlign: 'right',
+              textAlign: 'center',
               fontFamily: 'Space Mono, monospace',
               fontWeight: '700',
-              outline: 'none'
+              outline: 'none',
+              boxSizing: 'border-box',
+              height: '48px',
+              lineHeight: '1'
             }}
           />
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
           <label style={{ 
-            display: 'block', 
-            marginBottom: '8px',
             color: 'hsl(186, 14%, 43%)',
-            fontSize: '16px'
+            fontSize: '14px'
           }}>
             Number of People
           </label>
           {showPeopleError && (
             <span style={{ 
               color: '#E17457', 
-              fontSize: '16px',
-              marginBottom: '8px'
+              fontSize: '14px'
             }}>
               Can't be zero
             </span>
@@ -153,11 +155,12 @@ export default function TipCalculator() {
         <div style={{ position: 'relative' }}>
           <span style={{
             position: 'absolute',
-            left: '18px',
+            left: '20px',
             top: '50%',
             transform: 'translateY(-50%)',
             color: 'hsl(184, 14%, 56%)',
-            fontSize: '24px'
+            fontSize: '20px',
+            pointerEvents: 'none'
           }}>👤</span>
           <input
             type="number"
@@ -167,8 +170,8 @@ export default function TipCalculator() {
             placeholder="0"
             style={{ 
               width: '100%', 
-              padding: '6px 18px',
-              paddingLeft: '40px',
+              padding: '12px 20px',
+              paddingRight: '18px',
               border: showPeopleError ? '2px solid #E17457' : 'none',
               backgroundColor: 'hsl(189, 47%, 97%)',
               borderRadius: '5px',
@@ -177,16 +180,16 @@ export default function TipCalculator() {
               textAlign: 'right',
               fontFamily: 'Space Mono, monospace',
               fontWeight: '700',
-              outline: 'none'
+              outline: 'none',
+              boxSizing: 'border-box'
             }}
           />
         </div>
       </div>
 
-      {/* Right Section - Results Section */}
       <div style={{ 
         backgroundColor: 'hsl(183, 100%, 15%)',
-        padding: '40px',
+        padding: '48px 40px',
         borderRadius: '15px',
         display: 'flex',
         flexDirection: 'column',
@@ -197,13 +200,13 @@ export default function TipCalculator() {
             display: 'flex', 
             justifyContent: 'space-between', 
             alignItems: 'center',
-            marginBottom: '40px' 
+            marginBottom: '32px' 
           }}>
             <div>
               <div style={{ 
                 color: 'hsl(0, 100%, 100%)',
-                fontSize: '16px',
-                marginBottom: '4px'
+                fontSize: '14px',
+                marginBottom: '6px'
               }}>
                 Tip Amount
               </div>
@@ -218,7 +221,8 @@ export default function TipCalculator() {
               fontSize: '48px',
               color: 'hsl(172, 67%, 45%)',
               fontFamily: 'Space Mono, monospace',
-              fontWeight: '700'
+              fontWeight: '700',
+              lineHeight: '1'
             }}>
               ${isNaN(tipAmount) ? '0.00' : tipAmount.toFixed(2)}
             </div>
@@ -233,8 +237,8 @@ export default function TipCalculator() {
             <div>
               <div style={{ 
                 color: 'hsl(0, 100%, 100%)',
-                fontSize: '16px',
-                marginBottom: '4px'
+                fontSize: '14px',
+                marginBottom: '6px'
               }}>
                 Total
               </div>
@@ -249,7 +253,8 @@ export default function TipCalculator() {
               fontSize: '48px',
               color: 'hsl(172, 67%, 45%)',
               fontFamily: 'Space Mono, monospace',
-              fontWeight: '700'
+              fontWeight: '700',
+              lineHeight: '1'
             }}>
               ${isNaN(totalAmount) ? '0.00' : totalAmount.toFixed(2)}
             </div>
@@ -261,7 +266,7 @@ export default function TipCalculator() {
           disabled={!hasValues}
           style={{ 
             width: '100%', 
-            padding: '10px',
+            padding: '12px',
             border: 'none',
             backgroundColor: hasValues ? 'hsl(172, 67%, 45%)' : 'hsl(183, 79%, 24%)',
             color: 'hsl(183, 100%, 15%)',
@@ -271,7 +276,8 @@ export default function TipCalculator() {
             fontWeight: '700',
             cursor: hasValues ? 'pointer' : 'not-allowed',
             textTransform: 'uppercase',
-            transition: 'background-color 0.3s ease'
+            transition: 'background-color 0.3s ease',
+            marginTop: 'auto'
           }}
           onMouseEnter={(e) => {
             if (hasValues) {
