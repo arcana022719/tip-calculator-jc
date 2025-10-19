@@ -1,15 +1,22 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  --background: hsl(172, 67%, 45%);
+  --foreground: #171717;
+  --primary-cyan: hsl(172, 67%, 45%);
+  --dark-cyan: hsl(183, 100%, 15%);
+  --grey-500: hsl(186, 14%, 43%);
+  --grey-400: hsl(184, 14%, 56%);
+  --grey-200: hsl(185, 41%, 84%);
+  --grey-50: hsl(189, 47%, 97%);
+  --white: hsl(172, 67%, 45%);
+  --bg-cyan: hsl(185, 41%, 97%);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,7 +27,96 @@
 }
 
 body {
-  background: var(--background);
+  background: hsl(172, 67%, 45%) !important;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
 }
+
+.page-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  gap: 88px;
+  box-sizing: border-box;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Tablet and below */
+@media (max-width: 920px) {
+  .page-container {
+    padding: 50px 20px 20px 20px;
+    gap: 60px;
+  }
+  
+  .logo {
+    width: 80px;
+    height: auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .page-container {
+    justify-content: flex-start;
+    padding: 50px 0 0 0;
+    gap: 40px;
+    min-height: 100vh;
+  }
+  
+  .logo {
+    width: 70px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 375px) {
+  .page-container {
+    padding: 40px 0 0 0;
+    gap: 32px;
+  }
+  
+  .logo {
+    width: 65px;
+  }
+}
+
+/* Remove number input spinners completely */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  display: none !important;
+}
+
+input[type="number"]:hover::-webkit-inner-spin-button,
+input[type="number"]:hover::-webkit-outer-spin-button,
+input[type="number"]:focus::-webkit-inner-spin-button,
+input[type="number"]:focus::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none !important;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type="number"]:hover,
+input[type="number"]:focus {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
